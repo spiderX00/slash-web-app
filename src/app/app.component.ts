@@ -31,6 +31,6 @@ export class AppComponent {
   public router = inject(Router);
 
   get routeControl(): Boolean {
-    return this.router.url.includes('login') || this.router.url.includes('register');
+    return this.router.url.includes('login') || this.router.url.includes('register') || this.router.url.includes('pageNotFound');
   }
 }

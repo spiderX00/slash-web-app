@@ -1,0 +1,79 @@
+.page-not-found {
+    color: white;
+    animation: colorSlide 15s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+    height: 100vh;
+    text-align: center;
+
+    h1,
+    h3 {
+        margin: 10px;
+        cursor: default;
+        padding-bottom: 0.35em;
+
+        .fade-in {
+            animation: fadeIn 2s ease infinite;
+        }
+    }
+
+    h1 {
+        font-size: 10em;
+        transition: font-size 200ms ease-in-out;
+
+        span#digit1 {
+            animation-delay: 200ms;
+        }
+        span#digit2 {
+            animation-delay: 300ms;
+        }
+        span#digit3 {
+            animation-delay: 400ms;
+        }
+    }
+
+    button {
+        border: 1px solid white;
+        background: transparent;
+        outline: none;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+        transition: background-color 200ms ease-in;
+        margin: 20px 0;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: white;
+            color: #555;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes colorSlide {
+    0% {
+        background-color: #501755;
+    }
+    25% {
+        background-color: #2d1854;
+    }
+    50% {
+        background-color: #501755;
+    }
+    75% {
+        background-color: #2d1854;
+    }
+    100% {
+        background-color: #501755;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,15 +1,11 @@
-@import 'flexboxgrid/css/flexboxgrid.css';
-@import 'include-media';
+@import "flexboxgrid/css/flexboxgrid.css";
+@import "include-media";
 
 .container {
     display: flex;
     width: 100%;
     @include media(">=desktop") {
         padding: 2em;
-    }
-    @include media("<desktop") {
-        padding-top: 2em;
-        padding-bottom: 2em;
     }
 }
 
@@ -38,6 +34,8 @@
     flex: 1 1 auto;
 }
 
-.center-xs, .center-md, .center-lg {
+.center-xs,
+.center-md,
+.center-lg {
     text-align: inherit !important;
 }

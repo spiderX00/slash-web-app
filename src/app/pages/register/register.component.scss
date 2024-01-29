@@ -1,10 +1,20 @@
+@import "include-media";
+
 $background-login-form: #34164b;
+$color: #797979;
 $fixed-width: 400px;
+$small-fixed-width: 350px;
 
 .register {
     font-weight: 700;
     background: $background-login-form;
-    width: $fixed-width;
+    @include media(">=phone") {
+        min-width: $small-fixed-width;
+    }
+    @include media(">=tablet") {
+        min-width: $fixed-width;
+    }
+    width: 100%;
     border-radius: 4px;
     box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
     text-align: center;
@@ -27,5 +37,18 @@ $fixed-width: 400px;
     &__submit {
         width: auto;
         margin-bottom: 22px;
+    }
+
+    &__redirect {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color;
+        gap: .25em;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
     }
 }
