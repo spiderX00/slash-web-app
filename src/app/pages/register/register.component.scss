@@ -1,0 +1,31 @@
+$background-login-form: #34164b;
+$fixed-width: 400px;
+
+.register {
+    font-weight: 700;
+    background: $background-login-form;
+    width: $fixed-width;
+    border-radius: 4px;
+    box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
+    text-align: center;
+    padding: 1em;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__field {
+        width: 100%;
+    }
+
+    &__input {
+        color: white;
+        border: none;
+    }
+
+    &__submit {
+        width: auto;
+        margin-bottom: 22px;
+    }
+}

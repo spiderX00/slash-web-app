@@ -1,0 +1,17 @@
+@import 'include-media';
+
+.header {
+    padding: 15px 15px 0;
+
+    @include media(">=desktop") {
+        height: 250px;
+    }
+    @include media("<desktop") {
+        height: 200px;
+    }
+    background-image: url("/assets/3.jpg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}

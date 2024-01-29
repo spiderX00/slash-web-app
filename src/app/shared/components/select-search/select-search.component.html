@@ -1,0 +1,24 @@
+
+<mat-form-field [formGroup]="form" class="mat-form-select" appearance="standard">
+    <mat-label>{{label}}</mat-label>
+    <div class="input-wrapper">
+      <mat-select [multiple]="multiple" #activeSelect [(value)]="filteredLookup" (openedChange)="onOpenedChange()"
+        [formControlName]="controlName">
+        <div class="mat-select-search-inner mat-typography mat-datepicker-content mat-tab-header">
+          <input matInput type="text" (keyup)="handeKeyUp($event)" (keydown)="$event.stopPropagation()"
+            class="mat-select-search-input" placeholder="Ricerca" [formControl]="searchControl">
+          <button mat-icon-button aria-label="Clear"
+            (click)="reset()" class="mat-select-search-clear">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <mat-option *ngFor="let option of lookupItems" [value]="option.id">
+          <ng-container [ngTemplateOutlet]="genericTemplate"
+            [ngTemplateOutletContext]="{$implicit: option}"></ng-container>
+        </mat-option>
+        <div class="select-footer">
+          <a class="label" type="button" (click)="addItem()"><mat-icon>add</mat-icon> {{addLabel}} </a>
+        </div>
+      </mat-select>
+    </div>
+  </mat-form-field>

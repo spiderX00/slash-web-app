@@ -1,0 +1,16 @@
+$color-background: #501755;
+$color-background-gradient: linear-gradient(45deg, #501755 0%, #2d1854 100%);
+
+.page {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#501755+0,2d1854+100 */
+    background: $color-background;
+    /* Old browsers */
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #501755 0%, #2d1854 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: -o-linear-gradient(45deg, #501755 0%, #2d1854 100%);
+    background: $color-background-gradient;
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#501755', endColorstr='#2d1854', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+}

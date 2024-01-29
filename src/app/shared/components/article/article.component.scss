@@ -1,0 +1,60 @@
+// VARIABLES
+$color-text: #645c79;
+$color-header: $color-text;
+$color-title: white;
+$color-background: transparent;
+
+.article {
+    background-color: $color-background;
+    border-radius: 0.4rem;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+    gap: 4px;
+    padding: 1em;
+
+    &__picture {
+        flex: 1 0 auto;
+        max-height: 350px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    &__content {
+        padding: 2rem;
+        height: 100%;
+    }
+
+    &__header {
+        font-size: 3rem;
+        font-weight: 500;
+
+        .article__avatar {
+            background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+            background-size: cover;
+        }
+
+        .article__title {
+            color: white;
+        }
+
+        .article__subtitle {
+            color: $color-header;
+        }
+    }
+
+    &__paragraph {
+        .article__title {
+            color: $color-title;
+            font-size: 30px;
+        }
+        .article__text {
+            color: $color-text;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__actions {
+        gap: 1em;
+    }
+}
