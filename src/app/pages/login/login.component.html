@@ -6,19 +6,21 @@
           <h2 class="login__sign_in">SIGN IN</h2>
           <mat-form-field class="login__field">
             <mat-label>Email</mat-label>
-            <input class="input" matInput placeholder="" formControlName="email" required>
-            @if (emailFormControl.hasError('required')) {
-              <mat-error>Email is <strong>required</strong></mat-error>
-            }
+            <input type="email" matInput placeholder="" formControlName="email" required>
+            <val-errors controlName="email">
+              <ng-template valError="required"><mat-error>Email is <strong>required</strong></mat-error></ng-template>
+              <ng-template valError="email"><mat-error>Invalid email</mat-error></ng-template>
+            </val-errors>
           </mat-form-field>
           <mat-form-field class="login__field">
             <mat-label>Password</mat-label>
-            <input type="password" class="input" matInput placeholder="" formControlName="password" required>
-            @if (passwordFormControl.hasError('required')) {
-              <mat-error>Password is <strong>required</strong></mat-error>
-            }
+            <input type="password" matInput placeholder="" formControlName="password" required>
+            <val-errors controlName="password">
+              <ng-template valError="required"><mat-error>Password is <strong>required</strong></mat-error></ng-template>
+              <ng-template valError="minlength"><mat-error>Password should be 8 characters min</mat-error></ng-template>
+            </val-errors>
           </mat-form-field>
-          <button class="login__submit" mat-button mat-raised-button color="primary" [disabled]="loginFm.invalid">Login</button>
+          <button class="login__submit" mat-button mat-raised-button color="primary">Login</button>
           <a type="button" mat-button routerLink="/register">Create your account</a>
           <a type="button" mat-button routerLink="/home">Back to the home page</a>
         </form>

@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
@@ -7,8 +7,9 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/mat
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { ValdemortModule } from 'ngx-valdemort';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { passwordMatchingValidator } from './register.validator';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -25,38 +26,44 @@ import { JsonPipe } from '@angular/common';
     MatCardModule,
     RouterModule,
     ReactiveFormsModule,
-    JsonPipe
+    ValdemortModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private emailCtrl!: FormControl<string | null>;
+  private passwordCtrl!: FormControl<string | null>;
+  private confirmPasswordCtrl!: FormControl<string | null>;
 
-  public registerFm = this.formBuilder.group({
-    email: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-    confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(8)])
-  }, { validators: passwordMatchingValidator });
+  public registerFm!: FormGroup<{
+    email: FormControl<string | null>;
+    password: FormControl<string | null>;
+    confirmPassword: FormControl<string | null>;
+  }>;
 
-  get emailFormControl(): FormControl {
-    return this.registerFm.controls['email'];
+  ngOnInit(): void {
+    this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);
+    this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(8)]);
+    this.confirmPasswordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(8)]);
+
+    this.registerFm = this.formBuilder.group({
+      email: this.emailCtrl,
+      password: this.passwordCtrl,
+      confirmPassword: this.confirmPasswordCtrl
+    }, { validators: passwordMatchingValidator });
+
+    this.passwordCtrl.valueChanges.pipe(
+      // only recompute when the user stops typing for 400ms
+      debounceTime(400),
+      // only recompute if the new value is different from the last
+      distinctUntilChanged()
+    ).subscribe();
   }
 
-  get passwordFormControl(): FormControl {
-    return this.registerFm.controls['password'];
-  }
-
-  get confirmPasswordFormControl(): FormControl {
-    return this.registerFm.controls['confirmPassword'];
-  }
-
-  get fmNotMatchedError(): ValidationErrors {
-    return this.registerFm.errors?.['notmatched'];
-  }
-
-  onSubmit() {
+  onSubmit(): void {
 
   }
 }

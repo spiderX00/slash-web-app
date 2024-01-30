@@ -3,29 +3,36 @@
     <mat-card class="register">
       <mat-card-content>
         <form [formGroup]="registerFm" (ngSubmit)="onSubmit()" class="register__form" ngNativeValidate>
-          @if (fmNotMatchedError) {
-          <mat-error>* Passwords do not match</mat-error>
+          @if (registerFm.hasError('notmatched')) {
+            <mat-error class="register__default_errors">* Passwords do not match</mat-error>
           }
           <mat-form-field class="register__field">
             <mat-label>Email</mat-label>
-            <input class="input" matInput placeholder="" formControlName="email" required>
-            @if (emailFormControl.hasError('required')) {
-            <mat-error>Email is <strong>required</strong></mat-error>
-            }
+            <input type="email" matInput formControlName="email" required>
+            <val-errors controlName="email">
+              <ng-template valError="required"><mat-error>Email is <strong>required</strong></mat-error></ng-template>
+              <ng-template valError="email"><mat-error>Invalid email</mat-error></ng-template>
+            </val-errors>
           </mat-form-field>
           <mat-form-field class="register__field">
             <mat-label>Password</mat-label>
-            <input type="password" class="input" matInput placeholder="" formControlName="password" required>
-            @if (passwordFormControl.hasError('required')) {
-            <mat-error>Password is <strong>required</strong></mat-error>
-            }
+            <input type="password" matInput formControlName="password" required>
+            <val-errors controlName="password">
+              <ng-template valError="required"><mat-error>Password is
+                  <strong>required</strong></mat-error></ng-template>
+              <ng-template valError="minlength"><mat-error>Password should be 8 characters min</mat-error></ng-template>
+            </val-errors>
           </mat-form-field>
           <mat-form-field class="register__field">
             <mat-label>Confirm password</mat-label>
-            <input type="password" class="input" matInput placeholder="" formControlName="confirmPassword" required>
+            <input type="password" matInput formControlName="confirmPassword" required>
+            <val-errors controlName="confirmPassword">
+              <ng-template valError="required"><mat-error>Password is
+                  <strong>required</strong></mat-error></ng-template>
+              <ng-template valError="minlength"><mat-error>Password should be 8 characters min</mat-error></ng-template>
+            </val-errors>
           </mat-form-field>
-          <button class="register__submit" mat-button mat-raised-button color="primary"
-            [disabled]="registerFm.invalid">Join</button>
+          <button class="register__submit" mat-button mat-raised-button color="primary">Join</button>
           <div class="register__redirect">
             <span>Already have an account?</span><a type="button" routerLink="/login">Log In</a>
           </div>

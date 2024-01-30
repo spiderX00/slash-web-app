@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
@@ -7,6 +7,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from '@angular/mat
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { ValdemortModule } from 'ngx-valdemort';
 
 @Component({
   selector: 'app-login',
@@ -22,19 +23,27 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatCardModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ValdemortModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   private formBuilder: FormBuilder = inject(FormBuilder);
 
-  public loginFm = this.formBuilder.group({
-    email: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(8)])
-  });
+  public loginFm!: FormGroup<{
+    email: FormControl<string | null>;
+    password: FormControl<string | null>;
+  }>;
+
+  ngOnInit(): void {
+    this.loginFm = this.formBuilder.group({
+      email: this.formBuilder.control('', [Validators.required, Validators.email]),
+      password: this.formBuilder.control('', [Validators.required, Validators.minLength(8)])
+    });
+  }
 
   get emailFormControl(): FormControl {
     return this.loginFm.controls['email'];
@@ -44,7 +53,7 @@ export class LoginComponent {
     return this.loginFm.controls['password'];
   }
 
-  onSubmit() {
-    
+  onSubmit(): void {
+
   }
 }
