@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
@@ -30,18 +30,25 @@ import { ValdemortModule } from 'ngx-valdemort';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-
-  private formBuilder: FormBuilder = inject(FormBuilder);
+  private formBuilder: NonNullableFormBuilder;
+  private emailCtrl!: FormControl<string | null>;
+  private passwordCtrl!: FormControl<string | null>;
 
   public loginFm!: FormGroup<{
     email: FormControl<string | null>;
     password: FormControl<string | null>;
   }>;
 
+  constructor(@Inject(NonNullableFormBuilder) formBuilder: NonNullableFormBuilder) {
+    this.formBuilder = formBuilder;
+  }
+
   ngOnInit(): void {
+    this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);
+    this.passwordCtrl = this.formBuilder.control('', [Validators.required, Validators.minLength(8)]);
     this.loginFm = this.formBuilder.group({
-      email: this.formBuilder.control('', [Validators.required, Validators.email]),
-      password: this.formBuilder.control('', [Validators.required, Validators.minLength(8)])
+      email: this.emailCtrl,
+      password: this.passwordCtrl
     });
   }
 

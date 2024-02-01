@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Inject, OnInit, inject } from '@angular/core';
+import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
@@ -33,7 +33,7 @@ import { passwordMatchingValidator } from './register.validator';
 })
 export class RegisterComponent implements OnInit {
 
-  private formBuilder: FormBuilder = inject(FormBuilder);
+  private formBuilder: NonNullableFormBuilder = inject(NonNullableFormBuilder);
   private emailCtrl!: FormControl<string | null>;
   private passwordCtrl!: FormControl<string | null>;
   private confirmPasswordCtrl!: FormControl<string | null>;
@@ -43,6 +43,10 @@ export class RegisterComponent implements OnInit {
     password: FormControl<string | null>;
     confirmPassword: FormControl<string | null>;
   }>;
+
+  constructor(@Inject(NonNullableFormBuilder) formBuilder: NonNullableFormBuilder) {
+    this.formBuilder = formBuilder;
+  }
 
   ngOnInit(): void {
     this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);

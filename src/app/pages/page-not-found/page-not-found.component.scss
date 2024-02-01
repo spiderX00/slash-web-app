@@ -9,23 +9,23 @@
         margin: 10px;
         cursor: default;
         padding-bottom: 0.35em;
+    }
 
-        .fade-in {
-            animation: fadeIn 2s ease infinite;
-        }
+    .fade-in {
+        animation: fadeIn 2s ease infinite;
     }
 
     h1 {
         font-size: 10em;
         transition: font-size 200ms ease-in-out;
 
-        span#digit1 {
+        #digit1 {
             animation-delay: 200ms;
         }
-        span#digit2 {
+        #digit2 {
             animation-delay: 300ms;
         }
-        span#digit3 {
+        #digit3 {
             animation-delay: 400ms;
         }
     }
@@ -73,7 +73,7 @@
     from {
         opacity: 0;
     }
-    100% {
+    to {
         opacity: 1;
     }
 }
