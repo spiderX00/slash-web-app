@@ -1,0 +1,12 @@
+$color-primary-main: #c2185b;
+$color-primary-lighter: #edbace;
+$color-primary-darker: #ac0e40;
+
+$color-warn-main: #ba5252;
+$color-warn-lighter: #eacbcb;
+$color-warn-darker: #a33838;
+$color-warn-200: #ba5252;
+
+.is-required {
+    color: $color-warn-main;
+}

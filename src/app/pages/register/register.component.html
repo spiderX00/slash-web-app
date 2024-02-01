@@ -7,7 +7,7 @@
             <mat-error class="register__default_errors">* Passwords do not match</mat-error>
           }
           <mat-form-field class="register__field">
-            <mat-label>Email</mat-label>
+            <mat-label [class.is-required]="registerFm.dirty && registerFm.get('email')?.hasError('required')">Email</mat-label>
             <input type="email" matInput formControlName="email" required>
             <val-errors controlName="email">
               <ng-template valError="required"><mat-error>Email is <strong>required</strong></mat-error></ng-template>
@@ -15,7 +15,7 @@
             </val-errors>
           </mat-form-field>
           <mat-form-field class="register__field">
-            <mat-label>Password</mat-label>
+            <mat-label [class.is-required]="registerFm.dirty && registerFm.get('password')?.hasError('required')">Password</mat-label>
             <input type="password" matInput formControlName="password" required>
             <val-errors controlName="password">
               <ng-template valError="required"><mat-error>Password is
@@ -24,7 +24,7 @@
             </val-errors>
           </mat-form-field>
           <mat-form-field class="register__field">
-            <mat-label>Confirm password</mat-label>
+            <mat-label [class.is-required]="registerFm.dirty && registerFm.get('confirmPassword')?.hasError('required')">Confirm password</mat-label>
             <input type="password" matInput formControlName="confirmPassword" required>
             <val-errors controlName="confirmPassword">
               <ng-template valError="required"><mat-error>Password is

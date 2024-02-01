@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { ValdemortModule } from 'ngx-valdemort';
+import { AddClassIfRequiredDirective } from '../../shared/directives/is-required.directive';
 
 @Component({
   selector: 'app-login',
@@ -24,22 +25,23 @@ import { ValdemortModule } from 'ngx-valdemort';
     MatCardModule,
     RouterModule,
     ReactiveFormsModule,
-    ValdemortModule
+    ValdemortModule,
+    AddClassIfRequiredDirective
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
   private formBuilder: NonNullableFormBuilder;
-  private emailCtrl!: FormControl<string | null>;
-  private passwordCtrl!: FormControl<string | null>;
+  public emailCtrl!: FormControl<string | null>;
+  public passwordCtrl!: FormControl<string | null>;
 
   public loginFm!: FormGroup<{
     email: FormControl<string | null>;
     password: FormControl<string | null>;
   }>;
 
-  constructor(@Inject(NonNullableFormBuilder) formBuilder: NonNullableFormBuilder) {
+  constructor(formBuilder: NonNullableFormBuilder) {
     this.formBuilder = formBuilder;
   }
 

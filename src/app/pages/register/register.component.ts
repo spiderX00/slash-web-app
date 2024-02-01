@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: FormControl<string | null>;
   }>;
 
-  constructor(@Inject(NonNullableFormBuilder) formBuilder: NonNullableFormBuilder) {
+  constructor(formBuilder: NonNullableFormBuilder) {
     this.formBuilder = formBuilder;
   }
 

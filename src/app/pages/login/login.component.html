@@ -5,7 +5,7 @@
         <form [formGroup]="loginFm" (ngSubmit)="onSubmit()" class="login__form" ngNativeValidate>
           <h2 class="login__sign_in">SIGN IN</h2>
           <mat-form-field class="login__field">
-            <mat-label>Email</mat-label>
+            <mat-label addClassIfRequired [control]="emailCtrl">Email</mat-label>
             <input type="email" matInput formControlName="email" required>
             <val-errors controlName="email">
               <ng-template valError="required"><mat-error>Email is <strong>required</strong></mat-error></ng-template>
@@ -13,7 +13,7 @@
             </val-errors>
           </mat-form-field>
           <mat-form-field class="login__field">
-            <mat-label>Password</mat-label>
+            <mat-label addClassIfRequired [control]="passwordCtrl">Password</mat-label>
             <input type="password" matInput formControlName="password" required>
             <val-errors controlName="password">
               <ng-template valError="required"><mat-error>Password is <strong>required</strong></mat-error></ng-template>
