@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ArticleComponent } from '../../shared/components/article/article.component';
+import { EventComponent } from '../../shared/components/event/event.component';
 
 const DEFAULT_VISUALIZATION = 10;
 
@@ -9,7 +9,7 @@ const DEFAULT_VISUALIZATION = 10;
   standalone: true,
   imports: [
     CommonModule,
-    ArticleComponent
+    EventComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

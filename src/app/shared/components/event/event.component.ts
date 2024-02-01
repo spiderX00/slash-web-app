@@ -5,7 +5,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
 
 @Component({
-    selector: 'app-article',
+    selector: 'app-event',
     standalone: true,
     imports: [
       CommonModule,
@@ -13,9 +13,9 @@ import { MatIconModule } from "@angular/material/icon";
       MatButtonModule,
       MatIconModule
     ],
-    templateUrl: './article.component.html',
-    styleUrl: './article.component.scss'
+    templateUrl: './event.component.html',
+    styleUrl: './event.component.scss'
   })
-  export class ArticleComponent {
+  export class EventComponent {
 
   }

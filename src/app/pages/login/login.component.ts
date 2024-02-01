@@ -45,14 +45,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get emailFormControl(): FormControl {
-    return this.loginFm.controls['email'];
-  }
-
-  get passwordFormControl(): FormControl {
-    return this.loginFm.controls['password'];
-  }
-
   onSubmit(): void {
 
   }
