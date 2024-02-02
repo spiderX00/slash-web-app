@@ -4,9 +4,7 @@
 .container {
     display: flex;
     width: 100%;
-    @include media(">=desktop") {
-        padding: 2em;
-    }
+    padding: 2em;
 }
 
 .container--expand {
@@ -22,8 +20,20 @@
     margin: auto !important;
 }
 
+.flex {
+    display: flex;
+}
+
 .flex-col {
     flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.align-center {
+    align-items: center;
 }
 
 .gap {

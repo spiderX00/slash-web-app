@@ -1,0 +1,40 @@
+@import "include-media";
+
+// VARIABLES
+$color-radius: #645c79;
+$color: white;
+$color-background: transparent;
+
+.user {
+    background-color: $color-background;
+    border-radius: 0.4rem;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+    color: $color;
+    box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
+
+    @include media(">=desktop") {
+        width: 800px;
+    }
+
+    &__avatar {
+        background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+        background-size: cover;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: .5px solid $color-radius;
+        margin-bottom: 1em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__field {
+        width: 100%;
+    }
+}

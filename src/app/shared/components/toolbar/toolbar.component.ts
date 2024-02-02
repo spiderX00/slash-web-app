@@ -19,7 +19,9 @@ import { Router, RouterModule } from '@angular/router';
 export class ToolbarComponent {
   public router = inject(Router);
 
+  private isAuthenticated = false;
+
   get routeControl(): Boolean {
-    return this.router.url.includes('login') || this.router.url.includes('register');
+    return this.isAuthenticated;
   }
 }

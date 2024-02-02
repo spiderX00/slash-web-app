@@ -3,9 +3,13 @@
         <mat-icon>home</mat-icon>
     </a>
     <span class="spacer"></span>
-    @if (!routeControl) {
-        <a type="button" mat-button color="accent" routerLink="/login" routerLinkActive="active">
-            Login/Register
-        </a>
+    @if (routeControl) {
+    <a type="button" mat-button color="accent" routerLink="/user" routerLinkActive="active">
+        Profile
+    </a>
+    } @else {
+    <a type="button" mat-button color="accent" routerLink="/login" routerLinkActive="active">
+        Login/Register
+    </a>
     }
 </mat-toolbar>
