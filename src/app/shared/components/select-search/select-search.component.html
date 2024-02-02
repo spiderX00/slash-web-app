@@ -1,5 +1,5 @@
 
-<mat-form-field [formGroup]="form" class="mat-form-select" appearance="standard">
+<mat-form-field [formGroup]="form" class="mat-form-select">
     <mat-label>{{label}}</mat-label>
     <div class="input-wrapper">
       <mat-select [multiple]="multiple" #activeSelect [(value)]="filteredLookup" (openedChange)="onOpenedChange()"

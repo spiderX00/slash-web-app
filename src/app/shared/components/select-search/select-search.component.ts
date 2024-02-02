@@ -1,22 +1,33 @@
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
+import { ControlContainer, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { paginatorParameters } from '../interfaces/paginator.interface';
 import { SelectSearch } from './select-search';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 const DEFAULT_SCROLL_VALUE = 1;
 const DEFAULT_STRING_PARAMETER = "filterName";
 
 @Component({
   selector: 'select-search',
-  templateUrl: './select-search.component.html',
-  styleUrls: ['./select-search.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
     MatSelectModule,
-    MatFormFieldModule
-  ]
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+  ],
+  templateUrl: './select-search.component.html',
+  styleUrls: ['./select-search.component.scss'],
 })
 export class SelectSearchComponent extends SelectSearch implements OnInit {
 
