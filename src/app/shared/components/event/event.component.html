@@ -1,22 +1,17 @@
 <mat-card class="article">
-    <mat-card-header class="article__header">
-      <div mat-card-avatar class="article__avatar"></div>
-      <mat-card-title class="article__title">Shiba Inu</mat-card-title>
-      <mat-card-subtitle class="article__subtitle">Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image class="article__picture" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-    <mat-card-content class="article__content">
-        <section class="article__paragraph">
-            <h2 class="article__title">The best VR games on the market</h2>
-            <p class="article__text">
-              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-              bred for hunting.
-            </p>
-        </section>
-    </mat-card-content>
-    <mat-card-actions class="article__actions" align="end">
+  <mat-card-header class="article__header">
+    <img mat-card-sm-image [ngSrc]="avatar" width="120" height="120" class="article__avatar" />
+    <mat-card-title class="article__title">{{title}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image class="article__picture" width="1000" height="350" [ngSrc]="imageUrl">
+  <mat-card-content class="article__content flex flex-wrap">
+    <section class="article__paragraph">
+      <p class="flex align-center"><mat-icon class="color-darker">location_on</mat-icon>&nbsp;&nbsp;{{streetAddress}}</p>
+      <p class="flex align-center"><mat-icon class="color-darker">calendar_today</mat-icon>&nbsp;&nbsp;{{date | date:'mediumDate'}}</p>
+    </section>
+    <div class="article__actions">
       <button mat-button mat-raised-button color="accent"><mat-icon>location_on</mat-icon>Location</button>
       <button mat-button mat-raised-button color="primary">Register</button>
-    </mat-card-actions>
-  </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>

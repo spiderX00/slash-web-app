@@ -4,7 +4,8 @@
 .container {
     display: flex;
     width: 100%;
-    padding: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .container--expand {
@@ -34,6 +35,10 @@
 
 .align-center {
     align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .gap {

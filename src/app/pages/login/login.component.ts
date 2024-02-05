@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -32,7 +32,7 @@ import { AddClassIfRequiredDirective } from '../../shared/directives/is-required
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  private formBuilder: NonNullableFormBuilder;
+  private formBuilder: NonNullableFormBuilder  = inject(NonNullableFormBuilder);
   public emailCtrl!: FormControl<string | null>;
   public passwordCtrl!: FormControl<string | null>;
 
@@ -40,10 +40,6 @@ export class LoginComponent implements OnInit {
     email: FormControl<string | null>;
     password: FormControl<string | null>;
   }>;
-
-  constructor(formBuilder: NonNullableFormBuilder) {
-    this.formBuilder = formBuilder;
-  }
 
   ngOnInit(): void {
     this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);

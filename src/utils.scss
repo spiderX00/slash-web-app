@@ -7,10 +7,16 @@ $color-warn-lighter: #eacbcb;
 $color-warn-darker: #a33838;
 $color-warn-200: #ba5252;
 
+$color-darker: #645c79;
+
 .is-required {
     color: $color-warn-main;
 }
 
 .text-align-right {
     text-align: right;
+}
+
+.color-darker {
+    color: $color-darker;
 }

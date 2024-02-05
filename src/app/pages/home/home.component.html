@@ -1,9 +1,9 @@
-<div class="container container--expand flex-col gap">
-    @for (tile of getRangeArray(visualization); track tile) {
-        <div class="row center-xs">
-            <div class="col-xs-12 col-md-8 col-lg-7">
-                <app-event></app-event>
-            </div>
+<div class="container container--expand">
+    <div class="row flex-wrap">
+        @for (tile of getRangeArray(visualization); track tile) {
+        <div class="col-xs-12 col-sm-6 col-lg-4 flex justify-center">
+            <app-event></app-event>
         </div>
-    }
+        }
+    </div>
 </div>

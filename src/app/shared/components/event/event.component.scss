@@ -1,15 +1,25 @@
+@import "include-media";
+
 // VARIABLES
-$color-text: #645c79;
-$color-header: $color-text;
+$color-darker: #645c79;
+$color-accent: #e7ecee;
+$color-border: #212121;
+$color-header: $color-darker;
 $color-title: white;
 $color-background: transparent;
+$small-fixed-width: 400px;
 
 .article {
     background-color: $color-background;
     border-radius: 0.4rem;
+    border: 1px solid $color-darker;
     box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-    gap: 4px;
     padding: 1em;
+    margin-bottom: 2em;
+
+    @include media("<=tablet") {
+        max-width: $small-fixed-width;
+    }
 
     &__picture {
         flex: 1 0 auto;
@@ -26,10 +36,11 @@ $color-background: transparent;
     &__header {
         font-size: 3rem;
         font-weight: 500;
+        justify-content: space-between;
+        margin-bottom: .5em;
 
         .article__avatar {
-            background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-            background-size: cover;
+            border-radius: 50%;
         }
 
         .article__title {
@@ -42,20 +53,15 @@ $color-background: transparent;
     }
 
     &__paragraph {
-        .article__title {
-            color: $color-title;
-            font-size: 30px;
-        }
-
-        .article__text {
-            color: $color-text;
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
+        display: block;
+        color: $color-accent;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 20px;
     }
 
     &__actions {
+        display: flex;
         gap: 1em;
     }
 }

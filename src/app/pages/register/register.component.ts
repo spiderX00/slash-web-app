@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -43,10 +43,6 @@ export class RegisterComponent implements OnInit {
     password: FormControl<string | null>;
     confirmPassword: FormControl<string | null>;
   }>;
-
-  constructor(formBuilder: NonNullableFormBuilder) {
-    this.formBuilder = formBuilder;
-  }
 
   ngOnInit(): void {
     this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);

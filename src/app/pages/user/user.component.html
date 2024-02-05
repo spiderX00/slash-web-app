@@ -9,15 +9,15 @@
                     <form [formGroup]="userFm" (ngSubmit)="onSubmit()" ngNativeValidate>
                         <mat-form-field class="user__field">
                             <mat-label>Email</mat-label>
-                            <input type="email" matInput formControlName="email" required>
+                            <input type="email" matInput formControlName="email">
                         </mat-form-field>
                         <mat-form-field class="user__field">
                             <mat-label>Name</mat-label>
-                            <input type="text" matInput formControlName="name" required>
+                            <input type="text" matInput formControlName="name">
                         </mat-form-field>
                         <mat-form-field class="user__field">
                             <mat-label>Last name</mat-label>
-                            <input type="text" matInput formControlName="lastName" required>
+                            <input type="text" matInput formControlName="lastName">
                         </mat-form-field>
                     </form>
                 </div>
