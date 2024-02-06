@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { EventComponent } from '../../shared/components/event/event.component';
 
-const DEFAULT_VISUALIZATION = 10;
+const DEFAULT_VISUALIZATION = 8;
 
 @Component({
   selector: 'app-home',

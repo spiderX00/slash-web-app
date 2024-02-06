@@ -1,17 +1,19 @@
-<mat-card class="article">
-  <mat-card-header class="article__header">
-    <img mat-card-sm-image [ngSrc]="avatar" width="120" height="120" class="article__avatar" />
-    <mat-card-title class="article__title">{{title}}</mat-card-title>
+<mat-card class="event">
+  <mat-card-header class="event__header">
+    <img mat-card-sm-image [ngSrc]="avatar" width="120" height="120" class="event__avatar" loading="eager"/>
+    <mat-card-title class="event__title">{{title}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image class="article__picture" width="1000" height="350" [ngSrc]="imageUrl">
-  <mat-card-content class="article__content flex flex-wrap">
-    <section class="article__paragraph">
+  <img mat-card-image [ngSrc]="imageUrl" width="1000" height="350" class="event__picture" loading="eager">
+  <mat-card-content class="event__content flex flex-wrap">
+    <section class="event__paragraph">
       <p class="flex align-center"><mat-icon class="color-darker">location_on</mat-icon>&nbsp;&nbsp;{{streetAddress}}</p>
       <p class="flex align-center"><mat-icon class="color-darker">calendar_today</mat-icon>&nbsp;&nbsp;{{date | date:'mediumDate'}}</p>
+      <p class="flex align-center"><mat-icon class="color-darker">view_array</mat-icon>&nbsp;&nbsp;{{attendees}} Attendees</p>
     </section>
-    <div class="article__actions">
-      <button mat-button mat-raised-button color="accent"><mat-icon>location_on</mat-icon>Location</button>
-      <button mat-button mat-raised-button color="primary">Register</button>
-    </div>
   </mat-card-content>
+  <mat-card-actions class="event__actions justify-center">
+    <button mat-raised-button color="accent"><mat-icon>location_on</mat-icon>Location</button>
+    <button mat-raised-button color="primary">Register</button>
+    <button mat-flat-button color="warn"><mat-icon>call_made</mat-icon>Bracket</button>
+  </mat-card-actions>
 </mat-card>

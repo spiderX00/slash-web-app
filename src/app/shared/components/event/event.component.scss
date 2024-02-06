@@ -4,21 +4,27 @@
 $color-darker: #645c79;
 $color-accent: #e7ecee;
 $color-border: #212121;
+$color-warn-lighter: #eacbcb;
 $color-header: $color-darker;
 $color-title: white;
 $color-background: transparent;
-$small-fixed-width: 400px;
+$small-fixed-width: 350px;
 
-.article {
+.event {
     background-color: $color-background;
     border-radius: 0.4rem;
-    border: 1px solid $color-darker;
+    border: 1px solid;
+    border-color: $color-darker;
     box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-    padding: 1em;
     margin-bottom: 2em;
+    cursor: pointer;
 
     @include media("<=tablet") {
         max-width: $small-fixed-width;
+    }
+
+    &:focus,&:hover {
+        border-color: $color-warn-lighter;
     }
 
     &__picture {
@@ -29,25 +35,24 @@ $small-fixed-width: 400px;
     }
 
     &__content {
-        padding: 2rem;
         height: 100%;
+        padding-top: 16px;
     }
 
     &__header {
-        font-size: 3rem;
         font-weight: 500;
         justify-content: space-between;
-        margin-bottom: .5em;
+        margin-bottom: 16px;
 
-        .article__avatar {
+        .event__avatar {
             border-radius: 50%;
         }
 
-        .article__title {
+        .event__title {
             color: white;
         }
 
-        .article__subtitle {
+        .event__subtitle {
             color: $color-header;
         }
     }
