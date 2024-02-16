@@ -17,19 +17,14 @@ $small-fixed-width: 350px;
     border-color: $color-darker;
     box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
     margin-bottom: 2em;
-    cursor: pointer;
-
-    @include media("<=tablet") {
-        max-width: $small-fixed-width;
-    }
+    max-width: $small-fixed-width;
 
     &:focus,&:hover {
         border-color: $color-warn-lighter;
     }
 
     &__picture {
-        flex: 1 0 auto;
-        max-height: 350px;
+        height: 250px;
         object-fit: cover;
         object-position: top;
     }
@@ -60,7 +55,7 @@ $small-fixed-width: 350px;
     &__paragraph {
         display: block;
         color: $color-accent;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 500;
         margin-bottom: 20px;
     }

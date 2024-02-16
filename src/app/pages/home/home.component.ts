@@ -1,23 +1,33 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { provideComponentStore } from '@ngrx/component-store';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { EventComponent } from '../../shared/components/event/event.component';
-
-const DEFAULT_VISUALIZATION = 8;
+import { TournamentStoreService } from '../../shared/services/tournaments-store/tournaments-store.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
+  providers: [
+    provideComponentStore(TournamentStoreService)
+  ],
   imports: [
     CommonModule,
-    EventComponent
+    EventComponent,
+    InfiniteScrollModule,
+    AsyncPipe
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  public visualization: number = DEFAULT_VISUALIZATION;
-  
-  getRangeArray(length: number): number[] {
-    return Array.from({ length }, (_, index) => index);
+  private tournamentsStore = inject(TournamentStoreService);
+
+  public lazyScrollLoading() {
+    this.tournamentsStore.loadPage();
   }
+
+  public readonly nodes$ = this.tournamentsStore.nodes$;
+  public readonly scrollThrottleMs = 500;
+
 }

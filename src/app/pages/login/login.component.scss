@@ -7,17 +7,19 @@ $small-fixed-width: 350px;
 .login {
     font-weight: 700;
     background: $background-login-form;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
+    text-align: center;
+    padding: 1em;
+
+    // Media queries
     @include media(">=phone") {
         min-width: $small-fixed-width;
     }
     @include media(">=tablet") {
         min-width: $fixed-width;
     }
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 0 9px 3px rgba(226, 30, 228, 0.24);
-    text-align: center;
-    padding: 1em;
 
     input[type="password"]::-ms-reveal,
     input[type="password"]::-ms-clear {

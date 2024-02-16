@@ -1,19 +1,19 @@
 <mat-card class="event">
   <mat-card-header class="event__header">
-    <img mat-card-sm-image [ngSrc]="avatar" width="120" height="120" class="event__avatar" loading="eager"/>
-    <mat-card-title class="event__title">{{title}}</mat-card-title>
+    <img mat-card-sm-image [ngSrc]="urls.avatar" width="120" height="120" class="event__avatar" loading="eager"/>
+    <mat-card-title class="event__title">{{event.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [ngSrc]="imageUrl" width="1000" height="350" class="event__picture" loading="eager">
+  <img mat-card-image [ngSrc]="urls.cover" width="1000" height="350" class="event__picture" loading="eager">
   <mat-card-content class="event__content flex flex-wrap">
     <section class="event__paragraph">
-      <p class="flex align-center"><mat-icon class="color-darker">location_on</mat-icon>&nbsp;&nbsp;{{streetAddress}}</p>
-      <p class="flex align-center"><mat-icon class="color-darker">calendar_today</mat-icon>&nbsp;&nbsp;{{date | date:'mediumDate'}}</p>
-      <p class="flex align-center"><mat-icon class="color-darker">view_array</mat-icon>&nbsp;&nbsp;{{attendees}} Attendees</p>
+      <p class="flex align-center"><mat-icon class="color-darker">location_on</mat-icon>&nbsp;&nbsp;{{event.venueAddress}}</p>
+      <p class="flex align-center"><mat-icon class="color-darker">calendar_today</mat-icon>&nbsp;&nbsp;{{event.startAt | date:'mediumDate'}}</p>
+      <p class="flex align-center"><mat-icon class="color-darker">view_array</mat-icon>&nbsp;&nbsp;{{event.numAttendees}} Attendees</p>
     </section>
   </mat-card-content>
   <mat-card-actions class="event__actions justify-center">
     <button mat-raised-button color="accent"><mat-icon>location_on</mat-icon>Location</button>
-    <button mat-raised-button color="primary">Register</button>
-    <button mat-flat-button color="warn"><mat-icon>call_made</mat-icon>Bracket</button>
+    <a [href]="urls.register" target="_blank" type="button" mat-raised-button color="primary">Register</a>
+    <a [href]="urls.webPage" target="_blank" mat-flat-button color="warn"><mat-icon>call_made</mat-icon>Bracket</a>
   </mat-card-actions>
 </mat-card>
