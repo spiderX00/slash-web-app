@@ -8,16 +8,7 @@ import {
 import { Observable, map, switchMap, withLatestFrom } from "rxjs";
 import { Tournament } from "../tournament/tournament.interface";
 import { TournamentService } from "../tournament/tournament.service";
-
-export interface TournamentsState {
-  nodes: Array<Tournament>;
-  currentPage: number;
-}
-
-const initialState: TournamentsState = {
-  nodes: [],
-  currentPage: 1
-}
+import { TournamentsState, initialState } from "./tournaments-state";
 
 @Injectable({
   providedIn: 'root'
