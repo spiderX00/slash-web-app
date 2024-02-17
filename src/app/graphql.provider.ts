@@ -3,8 +3,8 @@ import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
+import { environment} from '../environments/environment.development';
 
-const uri = 'https://api.start.gg/gql/alpha';
 export function createApollo() {
   const httpLink = inject(HttpLink);
 
@@ -15,7 +15,7 @@ export function createApollo() {
   }));
 
   const auth = setContext((operation, context) => {
-    const token = "f37a5589ddeee4a4eeccef9ccb7c2e90";
+    const token = environment.GG_API_KEY;
     return {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -23,7 +23,7 @@ export function createApollo() {
     };
   });
 
-  const link = ApolloLink.from([basic, auth, httpLink.create({ uri })]);
+  const link = ApolloLink.from([basic, auth, httpLink.create({ uri: environment.GG_ENDPOINT })]);
   const cache = new InMemoryCache();
 
   return {

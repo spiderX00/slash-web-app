@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { provideComponentStore } from '@ngrx/component-store';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { EventComponent } from '../../shared/components/event/event.component';
@@ -8,6 +8,7 @@ import { TournamentStoreService } from '../../shared/services/tournaments-store/
 @Component({
   selector: 'app-home',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     provideComponentStore(TournamentStoreService)
   ],

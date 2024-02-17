@@ -29,7 +29,7 @@ export class TournamentStoreService extends ComponentStore<TournamentsState> imp
     })
   )
 
-  private readonly selectNodes = (state: TournamentsState) => state.nodes as Array<Tournament>;
+  private selectNodes = (state: TournamentsState) => state.nodes as Array<Tournament>;
 
   constructor(private readonly tournamentService: TournamentService) {
     super(initialState);
@@ -41,7 +41,7 @@ export class TournamentStoreService extends ComponentStore<TournamentsState> imp
     this.loadPage();
   }
 
-  public readonly loadPage = this.effect((trigger$: Observable<void>) => {
+  public loadPage = this.effect((trigger$: Observable<void>) => {
     return trigger$.pipe(
       withLatestFrom(this.select((state) => state)),
       map(([, state]) => state),
