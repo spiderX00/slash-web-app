@@ -3,7 +3,7 @@ import { ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { environment} from '../environments/environment.development';
+import { environment } from '../environments/environment.development';
 
 export function createApollo() {
   const httpLink = inject(HttpLink);
