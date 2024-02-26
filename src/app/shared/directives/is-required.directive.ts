@@ -1,5 +1,6 @@
-import { Directive, HostBinding, Input, OnInit } from '@angular/core';
+import { Directive, HostBinding, Input, OnInit, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { LoggerService } from '../services/logger/logger.service';
 
 @Directive({
   selector: '[addClassIfRequired]',
@@ -8,20 +9,24 @@ import { FormControl } from '@angular/forms';
 export class AddClassIfRequiredDirective implements OnInit {
   @Input() control!: FormControl<string | null>;
 
+  // Declare logger service
+  private loggerService: LoggerService = inject(LoggerService);
+  private logger = this.loggerService.getLogger();
+
   ngOnInit() {
     if (!this.control) {
-      console.error('FormControl is required for the nsAddClassIsRequired directive.');
+      this.logger.error('FormControl is required for the nsAddClassIsRequired directive.');
       return;
     }
 
     if (!(this.control instanceof FormControl)) {
-      console.error('Invalid FormControl provided for nsAddClassIsRequired directive.');
+      this.logger.error('Invalid FormControl provided for nsAddClassIsRequired directive.');
       return;
     }
   }
 
   @HostBinding('class.is-required')
   get isRequired() {
-    return this.control && this.control.dirty && this.control.hasError('required');
+    return this.control?.dirty && this.control.hasError('required');
   }
 }
