@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 export const routes: Routes = [
     {
@@ -33,7 +33,7 @@ export const routes: Routes = [
                 .then(m => m.UserComponent)
     },
     {
-        path: '**', 
+        path: '**',
         pathMatch: 'full',
         redirectTo: 'pageNotFound'
     }

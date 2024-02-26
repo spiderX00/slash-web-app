@@ -10,7 +10,7 @@ import { TournamentStoreService } from '../../shared/services/tournaments-store/
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    provideComponentStore(TournamentStoreService)
+    provideComponentStore(TournamentStoreService),
   ],
   imports: [
     CommonModule,

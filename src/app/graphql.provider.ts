@@ -4,6 +4,7 @@ import { setContext } from '@apollo/client/link/context';
 import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { environment } from '../environments/environment.development';
+import { ErrorInterceptor } from './shared/interceptors/error-handler/error-handler.interceptor';
 
 export function createApollo() {
   const httpLink = inject(HttpLink);
@@ -36,6 +37,6 @@ export const graphqlProvider: ApplicationConfig['providers'] = [
   Apollo,
   {
     provide: APOLLO_OPTIONS,
-    useFactory: createApollo,
+    useFactory: createApollo
   },
 ];
